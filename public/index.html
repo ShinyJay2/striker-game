@@ -5,38 +5,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Striker Game</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <h1>STRIKER GAME</h1>
+
+    <div class="app-container">
         
-        <div id="menu">
-            <button class="mode-btn" onclick="startComputerMode()">1 vs Computer</button>
-            <div class="divider">--- OR ---</div>
-            <input type="text" id="roomInput" placeholder="Room Name (e.g. ROOM1)" maxlength="10">
-            <div class="row">
-                <button onclick="createRoom()">Create</button>
-                <button onclick="joinRoom()">Join</button>
+        <header>
+            <div class="logo-area">
+                <svg class="logo-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h4m-2-2v4"/><circle cx="17" cy="11" r="0.5" fill="currentColor"/><circle cx="15" cy="13" r="0.5" fill="currentColor"/></svg>
+                <h1>Striker Game</h1>
+            </div>
+            <p class="subtitle">Guess your opponent's secret 3-digit number before they guess yours. Get strikes for correct positions!</p>
+        </header>
+
+        <div id="menu" class="view-section">
+            
+            <div class="card">
+                <div class="icon-circle blue-bg">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </div>
+                <h2>1 vs 1</h2>
+                <p>Challenge a friend in real-time</p>
+                <div class="input-group">
+                    <input type="text" id="roomInput" placeholder="Enter Room Name (e.g. ROOM1)">
+                </div>
+                <button class="btn btn-primary" onclick="createRoom()">Create Game &rarr;</button>
+                <button class="btn btn-text" onclick="joinRoom()">Have a code? Join existing game</button>
+            </div>
+
+            <div class="card">
+                <div class="icon-circle green-bg">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                </div>
+                <h2>vs Computer</h2>
+                <p>Test your skills against AI</p>
+                <button class="btn btn-secondary" onclick="startComputerMode()">Start Game &rarr;</button>
             </div>
         </div>
 
-        <div id="setup" class="hidden">
-            <h2>Set Your Secret</h2>
-            <p>Pick 3 UNIQUE digits (0-9)</p>
-            <input type="number" id="secretInput" placeholder="123" maxlength="3">
-            <button class="action-btn" onclick="confirmSecret()">I'm Ready</button>
-        </div>
-
-        <div id="game" class="hidden">
-            <h3 id="statusMsg">Game Start!</h3>
-            
-            <div id="logs"></div>
-            
-            <div id="inputArea">
-                <input type="number" id="guessInput" placeholder="Guess..." maxlength="3">
-                <button id="guessBtn" onclick="submitGuess()">STRIKE</button>
+        <div id="setup" class="view-section hidden">
+            <div class="card">
+                <h2>Set Secret Number</h2>
+                <p>Pick 3 unique digits (e.g., 0 2 3)</p>
+                <input type="number" id="secretInput" class="big-input" placeholder=" • • • " maxlength="3">
+                <button class="btn btn-primary full-width" onclick="confirmSecret()">Ready to Play</button>
             </div>
         </div>
+
+        <div id="game" class="view-section hidden">
+            <div class="game-header">
+                <h3 id="statusMsg" class="status-badge">Game Start!</h3>
+            </div>
+            
+            <div id="logs" class="log-container">
+                </div>
+            
+            <div class="control-panel">
+                <input type="number" id="guessInput" class="game-input" placeholder="Guess..." maxlength="3">
+                <button class="btn btn-primary" onclick="submitGuess()">Strike!</button>
+            </div>
+        </div>
+
     </div>
 
     <script src="/socket.io/socket.io.js"></script>
