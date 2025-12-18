@@ -1,0 +1,29 @@
+body { font-family: 'Courier New', monospace; background: #111; color: #eee; margin: 0; padding: 20px; text-align: center; touch-action: manipulation; }
+.container { max-width: 500px; margin: 0 auto; }
+h1 { color: #0f0; margin-bottom: 30px; }
+.hidden { display: none; }
+
+input { 
+    font-size: 24px; padding: 10px; text-align: center; width: 150px; 
+    background: #222; border: 2px solid #555; color: #fff; border-radius: 8px; outline: none;
+}
+input:focus { border-color: #0f0; }
+
+button { 
+    font-size: 18px; padding: 12px 20px; margin: 10px; cursor: pointer; 
+    background: #333; color: #fff; border: 2px solid #555; border-radius: 8px; 
+}
+button:active { background: #555; }
+.mode-btn { width: 100%; background: #004400; border-color: #0f0; }
+.action-btn { background: #004400; color: #0f0; border-color: #0f0; width: 100%; margin-top: 20px;}
+
+#inputArea { 
+    position: fixed; bottom: 0; left: 0; width: 100%; 
+    background: #111; padding: 15px; border-top: 1px solid #333; 
+    display: flex; justify-content: center; gap: 10px;
+}
+#logs { margin-bottom: 100px; text-align: left; }
+.log-entry { padding: 10px; border-bottom: 1px solid #222; display: flex; justify-content: space-between; font-size: 18px;}
+.res-hit { color: #0ff; font-weight: bold; }
+.res-out { color: #f44; font-weight: bold; }
+.my-turn input { border-color: #0ff; }

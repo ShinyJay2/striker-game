@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Striker Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>STRIKER GAME</h1>
+        
+        <div id="menu">
+            <button class="mode-btn" onclick="startComputerMode()">1 vs Computer</button>
+            <div class="divider">--- OR ---</div>
+            <input type="text" id="roomInput" placeholder="Room Name (e.g. ROOM1)" maxlength="10">
+            <div class="row">
+                <button onclick="createRoom()">Create</button>
+                <button onclick="joinRoom()">Join</button>
+            </div>
+        </div>
+
+        <div id="setup" class="hidden">
+            <h2>Set Your Secret</h2>
+            <p>Pick 3 UNIQUE digits (0-9)</p>
+            <input type="number" id="secretInput" placeholder="123" maxlength="3">
+            <button class="action-btn" onclick="confirmSecret()">I'm Ready</button>
+        </div>
+
+        <div id="game" class="hidden">
+            <h3 id="statusMsg">Game Start!</h3>
+            
+            <div id="logs"></div>
+            
+            <div id="inputArea">
+                <input type="number" id="guessInput" placeholder="Guess..." maxlength="3">
+                <button id="guessBtn" onclick="submitGuess()">STRIKE</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="client.js"></script>
+</body>
+</html>
